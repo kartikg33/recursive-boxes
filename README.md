@@ -16,9 +16,11 @@ treemap-beta
             "box":1
             "box"
                 "box":1
-                "box":3
                 "box":2
                 "box":1
+                "box"
+                    "box":1
+                    "box":2
 ```
 
 
