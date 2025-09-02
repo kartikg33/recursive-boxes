@@ -24,7 +24,7 @@ treemap-beta
 ```
 
 
-<h2 align="center">An architectural strategy for building complex systems from simple, testable parts.</h2>
+<h2 align="center">An architectural strategy for building large complex systems from simple, testable blocks.</h2>
 
 ## TL;DR
 
