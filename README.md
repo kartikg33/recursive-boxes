@@ -124,3 +124,47 @@ Recursive Boxes is built on the principles of `TDD`, `IDD`, and `DDD`:
 | **Interface Driven Development (IDD)** | Well-defined Interfaces | Interfaces can be too abstract; not practically testable with real-world use cases | **Every interface must be testable**, even at the subsystem level |
 | **Domain Driven Development (DDD)** | Domain separation (bounded contexts) | Leaves implementation structure flexible. Lacking interface constracts and testability principles | Recursive Boxes provides a **recursive building-block structure** for bounded contexts |
 
+### Relationship to TIDD
+
+> [!TIP]
+> Read up on [TIDD](https://github.com/kartikg33/tidd) here.
+
+**TIDD** provides module-level design: every **interface** must be testable.
+
+**Recursive Boxes** provides system-level architecture: every **subsystem** is a box with a testable contract.
+
+Together:
+* TIDD → **better modules**
+* Recursive Boxes → **better systems**
+
+## Practical Workflow Example
+
+1. **Draw a box around a responsibility**
+
+   * Example: “Payment Processing” is its own box.
+
+2. **Define the contract (interface)**
+
+   ```ts
+   interface PaymentProcessor {
+     charge(userId: string, amount: number): PaymentResult
+   }
+   ```
+
+3. **Nest smaller boxes inside**
+
+   * Fraud Detection, Balance Checker, and Transaction Writer live *inside* Payment Processing.
+   * The outside world never sees them — only the `PaymentProcessor` contract.
+
+4. **Write tests against the box contract**
+
+   * Tests target guarantees (`amount > 0`, structured result, error handling).
+   * Internal changes (e.g. replacing Fraud Detection) don’t break the contract or tests.
+
+## Contributing
+
+Here’s how you can contribute:
+
+* Add design examples in the [`examples/`](./examples/) directory.
+* Build tooling for recursive box definition + validation.
+* Share Recursive Boxes as a practical strategy for **scalable, testable architectures**.
